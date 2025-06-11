@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create a Planet</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+
+</head>
+
+<body>
+  <div class="index-header-div">
+    <h1>
+      <%= isArray ? "All Planets" : `Planet ${planets.name}` %>
+    </h1>
+
+  </div>
+  <% if (isArray) { %>
+    <ul>
+      <% planets.forEach((planet)=> { %>
+        <li>
+          <a class="planet-cards" href="/planets?id=<%=planet._id%>">
+            <%= planet.name %>
+          </a>
+        </li>
+        <% }) %>
+
+    </ul>
+    <div class="planet-actions">
+      <a class="planets-index-link" href="/">
+        <div class="index-link-text">🏠 Home</div>
+      </a>
+      <a class="planets-index-link" href="/planets/new">
+        <div class="index-link-text">➕ New Planet</div>
+      </a>
+    </div>
+    <% } else {%>
+
+
+      <div class="planet-details">
+        <div class="status-box <%= planets.isHabitable ? 'habitable' : 'inhabitable' %>">
+          <p>
+            <%= planets.isHabitable ? "🪐 This planet is Habitable!" : "☄️ This planet is inHabitable!" %>
+          </p>
+
+          <p>
+            <%= planets.description %>
+          </p>
+        </div>
+
+        <div class="planet-actions">
+          <form class=" " action="/planets?id=<%= planets._id %>&_method=DELETE" method="POST">
+            <button class="delete-button" type="submit">
+              🗑️ Delete <%= planets.name %>
+            </button>
+          </form>
+
+          <a class="edit-link" href="/planets/edit?id=<%= planets._id %>">
+            <button class="edit-button">
+              ✏️ Edit <%= planets.name %>
+            </button>
+          </a>
+        </div>
+      </div>
+
+      <div class="planet-actions">
+        <a class="planets-index-link" href="/">
+          <div class="index-link-text">🏠 Home</div>
+        </a>
+        <a class="planets-index-link" href="/planets">
+          <div class="index-link-text">Back to Planetify Universe</div>
+        </a>
+      </div>
+
+      <% } %>
+</body>
+
+</html>

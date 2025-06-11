@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planetify - Create a Planet</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+
+</head>
+
+<body>
+
+  <h1>Create a New Planet!</h1>
+
+  <form class="form" action="/planets" method="POST">
+    <input type="text" name="name" id="name" placeholder="Planet Name" />
+    <textarea name="description" id="description" placeholder="Describe your planet"></textarea>
+    <div class="checkbox-div">
+      <label for="isHabitable">Habitable?</label>
+      <input type="checkbox" name="isHabitable" id="isHabitable" />
+    </div>
+    <button type="submit">Add Planet</button>
+  </form>
+
+  <div class="planet-actions">
+    <a class="planets-index-link" href="/">
+      <div class="index-link-text">🏠 Home</div>
+    </a>
+    <a class="planets-index-link" href="/planets">
+      <div class="index-link-text">Back to Planetify Universe</div>
+    </a>
+  </div>
+</body>
+
+</html>
